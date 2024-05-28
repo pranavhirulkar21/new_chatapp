@@ -26,23 +26,14 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-
-      - name: Upgrade pip
-        run: |
-          source venv/bin/activate
-          pip install --upgrade pip
-
+      
       - name: Install dependencies
-        run: |
-          source venv/bin/activate
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
-        run: |
-          source venv/bin/activate
-          zip release.zip ./* -r
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
@@ -69,13 +60,14 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
+
       
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_45705DDDBBC04A65BFB90BE11C596423 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_94819BFF842E4D259B287D317B45EB1D }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_752EC7757C9548269D1BC726C4C13F2B }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_46365958721844DBA5CA6B155AF34536 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_50FA979D45644B82A2203FF88412D904 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_DF4ADFED630A46A9B0B9002FF182F64D }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
@@ -83,3 +75,4 @@ jobs:
         with:
           app-name: 'ChattingApp'
           slot-name: 'Production'
+          
