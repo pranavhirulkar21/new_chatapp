@@ -103,10 +103,10 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mysqldb',
-        'USER': 'admin',
-        'PASSWORD': 'admin12345',
-        'HOST': 'mysqldb.ckz7bawd2dzf.ap-south-1.rds.amazonaws.com',
+        'NAME': 'chattingapp-database',
+        'USER': 'zespxfjzci',
+        'PASSWORD': 'uJ9Qb$U16pgvfQst',
+        'HOST': 'chattingapp-server.mysql.database.azure.com',
         'PORT': '3306',
     }
 }
