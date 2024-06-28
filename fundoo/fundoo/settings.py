@@ -100,16 +100,29 @@ CHANNEL_LAYERS = {
 
 # Database
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'chattingapp-database',
+#        'USER': 'zespxfjzci',
+#        'PASSWORD': 'uJ9Qb$U16pgvfQst',
+#        'HOST': 'chattingapp-server.mysql.database.azure.com',
+#        'PORT': '3306',
+#    }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'chattingapp-database',
-        'USER': 'zespxfjzci',
-        'PASSWORD': 'uJ9Qb$U16pgvfQst',
-        'HOST': 'chattingapp-server.mysql.database.azure.com',
-        'PORT': '3306',
-    }
+'default': {
+'ENGINE': 'django.db.backends.mysql',
+'NAME': os.environ.get('Chatapp_DB'),
+'USER': os.environ.get('Chatapp_DBUSER'),
+'PASSWORD': os.environ.get('Chatapp_DBPASSWORD'),
+'HOST': os.environ.get('Chatapp_DBHOST'),
+'PORT': '3306',
 }
+}
+
+
 #sagar kadam
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
