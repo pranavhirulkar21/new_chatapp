@@ -1,6 +1,7 @@
 #!/bin/bash
 
-cd /home/azureuser/new_chatapp venv/bin/activate 
+cd /home/azureuser/new_chatapp 
+source venv/bin/activate 
 pip3 install -r requirements.txt
 
 cd /home/azureuser/new_chatapp/fundoo
