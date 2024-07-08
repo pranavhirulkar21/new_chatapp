@@ -16,7 +16,7 @@ variables:
   BACKEND_USER: 'azureuser'
   REPO_URL: 'https://github.com/pranavhirulkar21/new_chatapp.git'
   #WORKSPACE: '$(System.DefaultWorkingDirectory)'
-  WORKSPACE: '/home/azureuser/myagent/_work/'
+  WORKSPACE: '/home/azureuser/myagent/_work/WORKSPACE'
 
 steps:
 - script: |
