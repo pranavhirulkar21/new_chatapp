@@ -19,7 +19,10 @@ variables:
   WORKSPACE: '/home/azureuser/myagent/_work/WORKSPACE'
 
 steps:
+
 - script: |
+    echo "Removing content"
+    rm -rf /home/azureuser/myagent/_work/WORKSPACE/
     echo "Cloning Repository"
     git clone -b master $(REPO_URL) $(WORKSPACE)
   displayName: 'Cloning Repository'
