@@ -21,7 +21,7 @@ variables:
 steps:
 - script: |
     echo "Cloning Repository"
-    git clone -b main $(REPO_URL) $(WORKSPACE)
+    git clone -b master $(REPO_URL) $(WORKSPACE)
   displayName: 'Cloning Repository'
 
 - script: |
