@@ -1,0 +1,66 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+
+trigger:
+- master
+
+pool:
+  name: 'ExecutionPool'
+  demands:
+  - agent.name -equals <your-agent-name>  # Optional, if you want to target a specific agent
+
+variables:
+  BACKEND_VM: '10.0.32.10'
+  BACKEND_USER: 'azureuser'
+  REPO_URL: 'https://github.com/pranavhirulkar21/new_chatapp.git'
+  WORKSPACE: '$(System.DefaultWorkingDirectory)'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+
+- script: |
+    echo "Cloning Repository"
+    git clone -b main $(REPO_URL) $(WORKSPACE)  c
+
+  displayName: 'Cloning Repository'
+
+- script: |
+    echo "Copying Code to Remote Server"
+    rsync -az $(WORKSPACE) $(BACKEND_USER)@$(BACKEND_VM):/tmp
+  displayName: 'Copying Code to Remote Server'
+
+- script: |
+    echo "Stopping Chat Application"
+    ssh $(BACKEND_USER)@$(BACKEND_VM) 'sudo systemctl stop chatapp.service'
+  displayName: 'Stopping Application'
+
+- script: |
+    echo "Copying fundoo file to Actual Location"
+    ssh $(BACKEND_USER)@$(BACKEND_VM) 'cp -rf /tmp/new_chatapp/fundoo /new_chatapp'
+  displayName: 'Copying fundoo file to Actual Location'
+
+- script: |
+    echo "Copying requirements.txt to Actual Location"
+    ssh $(BACKEND_USER)@$(BACKEND_VM) 'cp -rf /tmp/new_chatapp/requirements.txt /new_chatapp'
+  displayName: 'Copying requirements.txt to Actual Location'
+
+- script: |
+    echo "Installing requirements.txt"
+    ssh $(BACKEND_USER)@$(BACKEND_VM) 'source /new_chatapp/venv/bin/activate && cd /new_chatapp && pip3 install -r requirements.txt'
+  displayName: 'Installing requirements.txt'
+
+- script: |
+    echo "Making Migrations"
+    ssh $(BACKEND_USER)@$(BACKEND_VM) 'source /new_chatapp/venv/bin/activate && cd /new_chatapp && python3 manage.py makemigrations && python3 manage.py migrate'
+  displayName: 'Making Migrations'
+
+- script: |
+    echo "Starting Chat Application"
+    ssh $(BACKEND_USER)@$(BACKEND_VM) 'sudo systemctl start chatapp.service'
+  displayName: 'Starting Application'
