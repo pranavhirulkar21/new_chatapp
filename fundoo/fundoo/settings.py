@@ -118,7 +118,7 @@ DATABASES = {
 'USER': os.environ.get('Chatapp_DBUSER'),
 'PASSWORD': os.environ.get('Chatapp_DBPASSWORD'),
 'HOST': os.environ.get('Chatapp_DBHOST'),
-'PORT': '3306',
+'PORT': '3306'
 }
 }
 
