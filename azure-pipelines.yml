@@ -39,12 +39,12 @@ steps:
 
 - script: |
     echo "Copying fundoo file to Actual Location"
-    ssh $(BACKEND_USER)@$(BACKEND_VM) 'cp -rf /tmp/new_chatapp/fundoo /new_chatapp/'
+    ssh $(BACKEND_USER)@$(BACKEND_VM) 'cp -rf /tmp/WORKSPACE/fundoo /new_chatapp/'
   displayName: 'Copying fundoo file to Actual Location'
 
 - script: |
     echo "Copying requirements.txt to Actual Location"
-    ssh $(BACKEND_USER)@$(BACKEND_VM) 'cp -rf /tmp/new_chatapp/requirements.txt /new_chatapp/'
+    ssh $(BACKEND_USER)@$(BACKEND_VM) 'cp -rf /tmp/WORKSPACE/requirements.txt /new_chatapp/'
   displayName: 'Copying requirements.txt to Actual Location'
 
 - script: |
