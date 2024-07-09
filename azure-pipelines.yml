@@ -12,7 +12,7 @@ pool:
   - agent.name -equals BackendAgent
 
 variables:
-  BACKEND_VM: '10.0.32.10'
+  BACKEND_VM: '10.0.32.5'
   BACKEND_USER: 'azureuser'
   REPO_URL: 'https://github.com/pranavhirulkar21/new_chatapp.git'
   #WORKSPACE: '$(System.DefaultWorkingDirectory)'
