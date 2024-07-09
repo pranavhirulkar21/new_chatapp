@@ -39,22 +39,22 @@ steps:
 
 - script: |
     echo "Copying fundoo file to Actual Location"
-    ssh $(BACKEND_USER)@$(BACKEND_VM) 'cp -rf /tmp/WORKSPACE/fundoo /new_chatapp/'
+    ssh $(BACKEND_USER)@$(BACKEND_VM) 'cp -rf /tmp/WORKSPACE/fundoo /home/azureuser/new_chatapp/'
   displayName: 'Copying fundoo file to Actual Location'
 
 - script: |
     echo "Copying requirements.txt to Actual Location"
-    ssh $(BACKEND_USER)@$(BACKEND_VM) 'cp -rf /tmp/WORKSPACE/requirements.txt /new_chatapp/'
+    ssh $(BACKEND_USER)@$(BACKEND_VM) 'cp -rf /tmp/WORKSPACE/requirements.txt /home/azureuser/new_chatapp/'
   displayName: 'Copying requirements.txt to Actual Location'
 
 - script: |
     echo "Installing requirements.txt"
-    ssh $(BACKEND_USER)@$(BACKEND_VM) 'source /new_chatapp/venv/bin/activate && cd /new_chatapp && pip3 install -r requirements.txt'
+    ssh $(BACKEND_USER)@$(BACKEND_VM) 'source /home/azureuser/new_chatapp/venv/bin/activate && cd /home/azureuser/new_chatapp && pip3 install -r requirements.txt'
   displayName: 'Installing requirements.txt'
 
 - script: |
     echo "Making Migrations"
-    ssh $(BACKEND_USER)@$(BACKEND_VM) 'source /new_chatapp/venv/bin/activate && cd /new_chatapp && python3 manage.py makemigrations && python3 manage.py migrate'
+    ssh $(BACKEND_USER)@$(BACKEND_VM) 'source /home/azureuser/new_chatapp/venv/bin/activate && cd /home/azureuser/new_chatapp && python3 manage.py makemigrations && python3 manage.py migrate'
   displayName: 'Making Migrations'
 
 - script: |
