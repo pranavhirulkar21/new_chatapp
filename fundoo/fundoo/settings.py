@@ -100,27 +100,27 @@ CHANNEL_LAYERS = {
 
 # Database
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'chattingapp-database',
-#        'USER': 'zespxfjzci',
-#        'PASSWORD': 'uJ9Qb$U16pgvfQst',
-#        'HOST': 'chattingapp-server.mysql.database.azure.com',
-#        'PORT': '3306',
-#    }
-#}
-
 DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.mysql',
-'NAME': os.environ.get('Chatapp_DB'),
-'USER': os.environ.get('Chatapp_DBUSER'),
-'PASSWORD': os.environ.get('Chatapp_DBPASSWORD'),
-'HOST': os.environ.get('Chatapp_DBHOST'),
+'NAME': 'chatapp_db',
+'USER': 'chatappuser',
+'PASSWORD': 'Chatappuser@123',
+'HOST': '10.0.48.4',
 'PORT': '3306'
 }
 }
+
+#DATABASES = {
+#'default': {
+#'ENGINE': 'django.db.backends.mysql',
+#'NAME': os.environ.get('Chatapp_DB'),
+#'USER': os.environ.get('Chatapp_DBUSER'),
+#'PASSWORD': os.environ.get('Chatapp_DBPASSWORD'),
+#'HOST': os.environ.get('Chatapp_DBHOST'),
+#'PORT': '3306'
+#}
+#}
 
 
 #sagar kadam
