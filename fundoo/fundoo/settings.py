@@ -107,7 +107,8 @@ DATABASES = {
 'USER': 'chatappuser',
 'PASSWORD': 'Chatappuser@123',
 #'HOST': '10.0.48.4',
-'HOST': 'chatapp-database',
+#'HOST': 'chatapp-database',
+'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
 'PORT': '3306'
 }
 }
