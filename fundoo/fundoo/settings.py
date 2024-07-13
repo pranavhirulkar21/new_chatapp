@@ -106,7 +106,8 @@ DATABASES = {
 'NAME': 'chatapp_db',
 'USER': 'chatappuser',
 'PASSWORD': 'Chatappuser@123',
-'HOST': '10.0.48.4',
+#'HOST': '10.0.48.4',
+'HOST': 'chatapp-database',
 'PORT': '3306'
 }
 }
